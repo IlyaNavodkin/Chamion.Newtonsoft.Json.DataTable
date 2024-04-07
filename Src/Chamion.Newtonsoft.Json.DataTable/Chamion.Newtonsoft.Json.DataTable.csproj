@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net48;net6.0;netstandard2.0;netstandard2.1</TargetFrameworks>
+        <OutputType>Library</OutputType>
+        <LangVersion>latest</LangVersion>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Nuget">
+        <PackageId>Chamion.Newtonsoft.Json.DataTable</PackageId>
+        <Version>1.1.0</Version>
+        <Authors>IlyaNavodkin</Authors>
+        <Company>IlyaNavodkin</Company>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <Description>Simple DataTable converter for Newtonsoft.Json seriliaze lib.</Description>
+        <ProjectUrl>https://github.com/IlyaNavodkin/Chamion.Newtonsoft.Json.DataTable</ProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/IlyaNavodkin/Chamion.Newtonsoft.Json.DataTable</RepositoryUrl>
+        <Copyright>Copyright (c) 2024 Khudoshin Ilya (or Ilia) Igorevich</Copyright>
+        <Tags>JSON DataTable Newtonsoft.Json Newtonsoft</Tags>
+        <EnablePackageValidation>true</EnablePackageValidation>
+        <IncludeSymbols>true</IncludeSymbols>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\LICENSE.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Properties\" />
+    </ItemGroup>
+
+</Project>

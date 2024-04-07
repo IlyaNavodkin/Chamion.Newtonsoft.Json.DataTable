@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{4E3F63C0-101E-429D-B3ED-7FFBF30B87CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3454E761-3B08-45FF-A147-7D83B42EFFD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chamion.Newtonsoft.Json.DataTable", "Src\Chamion.Newtonsoft.Json.DataTable\Chamion.Newtonsoft.Json.DataTable.csproj", "{D42CCF85-21CE-450C-8CDB-CB530A5EE614}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chamion.Newtonsoft.Json.DataTable.Tests.Unit", "Tests\Chamion.Newtonsoft.Json.DataTable.Tests.Unit\Chamion.Newtonsoft.Json.DataTable.Tests.Unit.csproj", "{4C03D009-CAF6-4DBB-BC83-A8CA93B928A5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D42CCF85-21CE-450C-8CDB-CB530A5EE614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D42CCF85-21CE-450C-8CDB-CB530A5EE614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D42CCF85-21CE-450C-8CDB-CB530A5EE614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D42CCF85-21CE-450C-8CDB-CB530A5EE614}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C03D009-CAF6-4DBB-BC83-A8CA93B928A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C03D009-CAF6-4DBB-BC83-A8CA93B928A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C03D009-CAF6-4DBB-BC83-A8CA93B928A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C03D009-CAF6-4DBB-BC83-A8CA93B928A5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D42CCF85-21CE-450C-8CDB-CB530A5EE614} = {4E3F63C0-101E-429D-B3ED-7FFBF30B87CF}
+		{4C03D009-CAF6-4DBB-BC83-A8CA93B928A5} = {3454E761-3B08-45FF-A147-7D83B42EFFD4}
+	EndGlobalSection
+EndGlobal
