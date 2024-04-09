@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Chamion.Newtonsoft.Json.DataTable.Converters;
+using Chamion.Newtonsoft.Json.DataTable.Services;
 using Chamion.Newtonsoft.Json.DataTable.Tests.Unit.Comparers;
 using Chamion.Newtonsoft.Json.DataTable.Tests.Unit.Enums;
 using Chamion.Newtonsoft.Json.DataTable.Tests.Unit.Models;
@@ -84,9 +86,25 @@ namespace Chamion.Newtonsoft.Json.DataTable.Tests.Unit
         [Test]
         public void DataTableJsonConvert_SuccessfulConvert()
         {
-            var serializeObject = JsonConvert.SerializeObject(_model);
-            var deserializeObject = JsonConvert.DeserializeObject<MyBigModel>(serializeObject);
-            var serializeObjectNew = JsonConvert.SerializeObject(_model);
+            var structDatService = new StructureDataConverter();
+            
+            var objects = structDatService.ToAnonymousObjects(_model.DataTable);
+            var jsonString = JsonConvert.SerializeObject(objects);
+            var toDto = structDatService.MapAnonymousObjects<RowsObject>(objects);
+            
+            var deserializeObjects = JsonConvert.DeserializeObject<List<object>>(jsonString);
+            
+            var settings = new JsonSerializerSettings
+            {
+                Converters = new List<JsonConverter>
+                {
+                    new DataTableConverter<RowsObject>()
+                }
+            };
+            
+            var serializeObject = JsonConvert.SerializeObject(_model, settings);
+            var deserializeObject = JsonConvert.DeserializeObject<MyBigModel>(serializeObject,settings);
+            var serializeObjectNew = JsonConvert.SerializeObject(_model, settings);
             
             var isColumnTypeAndNameAndRowsCountEquals = _comparer.AreEqual(_model.DataTable, deserializeObject.DataTable);
             var isContentJsonIsEquals = serializeObject.Equals(serializeObjectNew);

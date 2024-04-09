@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Dynamic;
 using Chamion.Newtonsoft.Json.DataTable.Services.Contracts;
 
 namespace Chamion.Newtonsoft.Json.DataTable.Services
@@ -49,7 +50,52 @@ namespace Chamion.Newtonsoft.Json.DataTable.Services
 
             return resultList;
         }
+        
+        public IList<object> ToAnonymousObjects(System.Data.DataTable dataTable)
+        {
+            var resultList = new List<object>();
 
+            foreach (DataRow row in dataTable.Rows)
+            {
+                var obj = new ExpandoObject() as IDictionary<string, object>;
+
+                foreach (DataColumn column in dataTable.Columns)
+                {
+                    var columnName = column.ColumnName;
+                    var rowValue = row[columnName];
+
+                    obj[columnName] = rowValue != DBNull.Value ? rowValue : null;
+                }
+
+                resultList.Add(obj);
+            }
+
+            return resultList;
+        }
+        
+        public IList<T> MapAnonymousObjects<T>(IList<object> anonymousObjects) where T : new()
+        {
+            var resultList = new List<T>();
+
+            foreach (var anonymousObject in anonymousObjects)
+            {
+                var resultObject = new T();
+                var propertyValues = (IDictionary<string, object>)anonymousObject;
+
+                foreach (var property in typeof(T).GetProperties())
+                {
+                    if (propertyValues.TryGetValue(property.Name, out var value))
+                    {
+                        property.SetValue(resultObject, value);
+                    }
+                }
+
+                resultList.Add(resultObject);
+            }
+
+            return resultList;
+        }
+        
         /// <inheritdoc />
         public System.Data.DataTable ToDataTable<T>(IEnumerable<T> objects)
         {
